@@ -1,0 +1,21 @@
+/* Write your CSS here */
+
+.title-star-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-of-appointment {
+  min-height: 150x;
+  width: 400px;
+  padding: 10px 20px;
+  border: 1px solid #000;
+  border-radius: 10px;
+}
+.star-button {
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+}
