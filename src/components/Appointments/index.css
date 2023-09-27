@@ -33,14 +33,26 @@
 }
 
 .appointment-heading {
-  font-size: 25px;
+  font-size: 16px;
   font-weight: 600;
 }
+.appointment-inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
 
+@media screen and(min-width:768px) {
+  .appointment-inputs {
+    flex-direction: row;
+  }
+}
 .form {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  order: 1;
 }
 
 .inputs-container {
@@ -78,7 +90,14 @@
 }
 .appointment-list {
   list-style-type: none;
+  display: flex;
   flex-wrap: wrap;
   margin-left: 0;
   padding-left: 0;
+}
+@media screen and(max-width:767px) {
+  .appointment-list {
+    display: flex;
+    flex-direction: column;
+  }
 }

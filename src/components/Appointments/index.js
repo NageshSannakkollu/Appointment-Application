@@ -6,7 +6,12 @@ import AppointmentItem from '../AppointmentItem'
 import './index.css'
 
 class Appointments extends Component {
-  state = {titleInput: '', dateInput: '', appointmentList: []}
+  state = {
+    titleInput: '',
+    dateInput: '',
+    appointmentList: [],
+    starButtonClicked: false,
+  }
 
   onSubmitForm = event => {
     event.preventDefault()
@@ -41,6 +46,12 @@ class Appointments extends Component {
 
   onChangeDate = event => {
     this.setState({dateInput: event.target.value})
+  }
+
+  starredButton = () => {
+    this.setState(prevState => ({
+      starButtonClicked: !prevState.starButtonClicked,
+    }))
   }
 
   renderTitleInput = () => {
@@ -78,29 +89,36 @@ class Appointments extends Component {
   }
 
   render() {
-    const {appointmentList} = this.state
+    const {appointmentList, starButtonClicked} = this.state
     console.log(appointmentList)
+    const starredLists = appointmentList.filter(
+      eachStar => eachStar.isStarred === true,
+    )
+    const finalAppointments = starButtonClicked ? starredLists : appointmentList
+
     return (
       <div className="app-container">
         <div className="appointment-container">
           <h1 className="appointment-heading">Add Appointment</h1>
-          <form className="form" onSubmit={this.onSubmitForm}>
-            <div className="inputs-container">
-              {this.renderTitleInput()}
-              {this.renderDateInput()}
-              <button type="submit" className="add-button">
-                Add
-              </button>
-            </div>
+          <div className="appointment-inputs">
+            <form className="form" onSubmit={this.onSubmitForm}>
+              <div className="inputs-container">
+                {this.renderTitleInput()}
+                {this.renderDateInput()}
+                <button type="submit" className="add-button">
+                  Add
+                </button>
+              </div>
+            </form>
             <img
               src="https://assets.ccbp.in/frontend/react-js/appointments-app/appointments-img.png"
               alt="appointments"
               className="appointment-image"
             />
-          </form>
+          </div>
           <hr className="line" />
           <div className="appointment-starred-button">
-            <p>Appointments</p>
+            <h4>Appointments</h4>
             <button
               type="button"
               className="starred-button"
@@ -110,7 +128,7 @@ class Appointments extends Component {
             </button>
           </div>
           <ul className="appointment-list">
-            {appointmentList.map(eachAppointment => (
+            {finalAppointments.map(eachAppointment => (
               <AppointmentItem
                 appointmentDetails={eachAppointment}
                 key={eachAppointment.id}

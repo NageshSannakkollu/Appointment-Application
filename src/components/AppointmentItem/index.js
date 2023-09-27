@@ -17,9 +17,9 @@ const AppointmentItem = props => {
   }
 
   return (
-    <li className="list-of-appointment" key={id}>
+    <li className="list-of-appointment">
       <div className="title-star-container">
-        <h1>{titleInput}</h1>
+        <h1 className="title">{titleInput}</h1>
         <button
           type="button"
           data-testid="star"
@@ -29,7 +29,9 @@ const AppointmentItem = props => {
           <img src={starImage} alt="star" className="starredImage" />
         </button>
       </div>
-      <p>Date:{dateFormat}</p>
+      <p className="appointment-date">
+        Date:<span className="span">{dateFormat}</span>
+      </p>
     </li>
   )
 }

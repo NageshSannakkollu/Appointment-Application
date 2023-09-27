@@ -5,13 +5,27 @@
   justify-content: space-between;
   align-items: center;
 }
+.title {
+  font-size: 25px;
+}
 
+.appointment-date {
+  font-weight: 600;
+  font-size: 18px;
+}
+.span {
+  font-weight: 400;
+  font-size: 14px;
+}
 .list-of-appointment {
-  min-height: 150x;
-  width: 400px;
+  min-height: 100x;
+  width: 300px;
   padding: 10px 20px;
   border: 1px solid #000;
   border-radius: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  font-family: 'Roboto';
 }
 .star-button {
   border: 0;
